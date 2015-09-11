@@ -1,0 +1,1 @@
+json.extract! @event, :id, :status, :htmlLink, :summary, :description, :startDate, :startDateTime, :startTimeZone, :endDate, :endDateTime, :endTimeZone, :endTimeUnspecified, :recurrence, :created_at, :updated_at

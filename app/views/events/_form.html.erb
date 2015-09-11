@@ -1,0 +1,65 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :htmlLink %><br>
+    <%= f.text_field :htmlLink %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br>
+    <%= f.text_field :summary %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :startDate %><br>
+    <%= f.date_select :startDate %>
+  </div>
+  <div class="field">
+    <%= f.label :startDateTime %><br>
+    <%= f.datetime_select :startDateTime %>
+  </div>
+  <div class="field">
+    <%= f.label :startTimeZone %><br>
+    <%= f.text_field :startTimeZone %>
+  </div>
+  <div class="field">
+    <%= f.label :endDate %><br>
+    <%= f.date_select :endDate %>
+  </div>
+  <div class="field">
+    <%= f.label :endDateTime %><br>
+    <%= f.datetime_select :endDateTime %>
+  </div>
+  <div class="field">
+    <%= f.label :endTimeZone %><br>
+    <%= f.text_field :endTimeZone %>
+  </div>
+  <div class="field">
+    <%= f.label :endTimeUnspecified %><br>
+    <%= f.check_box :endTimeUnspecified %>
+  </div>
+  <div class="field">
+    <%= f.label :recurrence %><br>
+    <%= f.text_field :recurrence %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  htmlLink: MyString
+  summary: MyString
+  description: MyString
+  startDate: 2015-09-11
+  startDateTime: 2015-09-11 14:51:52
+  startTimeZone: MyString
+  endDate: 2015-09-11
+  endDateTime: 2015-09-11 14:51:52
+  endTimeZone: MyString
+  endTimeUnspecified: false
+  recurrence: MyString
+
+two:
+  status: MyString
+  htmlLink: MyString
+  summary: MyString
+  description: MyString
+  startDate: 2015-09-11
+  startDateTime: 2015-09-11 14:51:52
+  startTimeZone: MyString
+  endDate: 2015-09-11
+  endDateTime: 2015-09-11 14:51:52
+  endTimeZone: MyString
+  endTimeUnspecified: false
+  recurrence: MyString
