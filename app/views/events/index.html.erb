@@ -3,9 +3,13 @@
 <table>
   <tbody>
     <% @events.each do |event| %>
-      <tr><%= event.startDateTime %><%= event.endDateTime %></tr>
-      <tr><%= event.summary %></tr>
-      <tr>
+      <table>
+        <tr><%= event.startDateTime.strftime('%l:%M') %> - <%= event.endDateTime.strftime('%l:%M am') %></tr>
+        <tr><h4><%= event.summary %></h4></tr> <!-- Name of event -->
+      </table>
+      <!--<tr><%= event.startDateTime %><%= event.endDateTime %></tr>
+      <tr><%#= event.summary %></tr>
+      <tr>-->
     <%end%>
   <tbody>
 </table>
