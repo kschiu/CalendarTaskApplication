@@ -30820,3 +30820,99 @@ Started GET "/assets/tasks.js?body=1" for 10.0.2.2 at 2015-09-13 17:19:41 -0400
 
 Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-09-13 17:19:41 -0400
 >>>>>>> 8a4e15fd98b4f6249d3c98a1668845c6174738e9
+
+
+Started GET "/events/1" for 127.0.0.1 at 2015-09-13 17:45:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mEvent Load (0.1ms)[0m  SELECT  "events".* FROM "events"  WHERE "events"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered events/show.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 218ms (Views: 205.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-13 17:45:53 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-13 17:45:53 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-13 17:45:53 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-13 17:45:53 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-13 17:45:54 -0400
+
+
+Started GET "/events" for 127.0.0.1 at 2015-09-13 17:46:26 -0400
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.1ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"  WHERE "tasks"."event_id" = ?  [["event_id", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"  WHERE "tasks"."event_id" = ?[0m  [["event_id", 2]]
+  Rendered events/index.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 103ms (Views: 102.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/icons/full.png" for 127.0.0.1 at 2015-09-13 17:46:26 -0400
+
+
+Started GET "/assets/icons/empty.png" for 127.0.0.1 at 2015-09-13 17:46:26 -0400
