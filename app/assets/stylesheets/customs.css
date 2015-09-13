@@ -1,0 +1,95 @@
+/*Padding, Borders*/
+/* Year */
+
+body{
+	margin-right:5%;
+	margin-left:-5%;
+	margin-top:0%;
+	margin-bottom: 3%;
+}
+
+h1, h3{ 
+/* 2015: */
+font-family: AvenirNext-UltraLight;
+font-weight: 100;
+font-size: 30px;
+color: #000000;
+line-height: 122px;
+/*letter-spacing: 10px;*/
+}
+
+.calendar h1{
+	font-weight: 30;
+}
+
+
+#right{
+/* Rectangle 1: */
+background: #72C3E2;
+}
+
+
+/* Wednesday: */
+#today-month{
+font-family: AvenirNext-UltraLight;
+font-size: 24px;
+color: #FFFFFF;
+line-height: 41px;
+}
+
+/* 9: */
+#today-date{
+font-family: AvenirNext-UltraLight;
+font-size: 103px;
+color: #FFFFFF;
+line-height: 141px;
+}
+
+#today-year{ 
+    font-family: AvenirNext-UltraLight;
+    font-size: 103px;
+    color: #000;
+    line-height: 141px;
+} 
+
+#cal { 
+    font: 24px "Helvetica Neue", Helvatica, Arial, san-serif; 
+}
+
+#cal td { 
+	font-family: AvenirNext-UltraLight;
+	font-size: 20px;
+	color: #000000;
+	line-height: 41px;
+    width:70px; 
+    height:70px; 
+    text-align:center;
+} 
+
+
+#cal #months td { 
+    height:26px; 
+    line-height: 26px; 
+    text-transform: uppercase; 
+    font-size:90%; 
+    color:#000; 
+} 
+
+#cal #days td { 
+    height:30px; 
+    line-height: 26px; 
+    text-transform:uppercase; 
+    font-size:90%; 
+    color:#000; 
+} 
+
+
+#cal #days td:not(:last-child) { 
+    border-right:1px solid #fff; 
+}
+
+#cal #cal-frame td.today { 
+    background:#72C3E2; 
+    color:#fff; 
+		border-radius: 4px;
+} 
