@@ -258,3 +258,10 @@ Started GET "/" for 10.0.2.2 at 2015-09-13 15:55:22 -0400
 Processing by Rails::WelcomeController#index as HTML
   Rendered /opt/rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/railties-4.1.1/lib/rails/templates/rails/welcome/index.html.erb (13.2ms)
 Completed 200 OK in 119ms (Views: 71.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2015-09-13 16:00:24 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /opt/rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/railties-4.1.1/lib/rails/templates/rails/welcome/index.html.erb (14.4ms)
+Completed 200 OK in 104ms (Views: 65.0ms | ActiveRecord: 0.0ms)
