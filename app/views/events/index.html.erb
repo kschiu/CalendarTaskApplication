@@ -1,16 +1,23 @@
 <!-- <h1>Listing events</h1>
  -->
+<br /> <!--TODO: temp formatting fix -->
+<br /> <!--TODO: temp formatting fix -->
+
 <table>
   <tbody>
     <% @events.each do |event| %>
-      <table>
-        <tr><%= event.startDateTime.strftime('%l:%M') %> - <%= event.endDateTime.strftime('%l:%M am') %></tr>
-        <tr><h4><%= event.summary %></h4></tr> <!-- Name of event -->
-      </table>
-      <!--<tr><%= event.startDateTime %><%= event.endDateTime %></tr>
-      <tr><%#= event.summary %></tr>
-      <tr>-->
-    <%end%>
+      <% if event.startDate == Date.today %> <!--TODO: Correspond with @date -->
+        <table>
+          <tr><%= event.startDateTime.strftime('%l:%M') %> - <%= event.endDateTime.strftime('%l:%M %p') %></tr>
+          <tr><h4><%= event.summary %></h4></tr> <!-- Name of event -->
+          <%# if event.location is not nil %>
+            <!--<tr><%#= event.location %></tr>--> <!-- TODO: ensure event has location attribute -->
+          <%# end %>
+          <!--<tr><%#= event.startDate %></tr>--> <!-- for debugging -->
+        </table>
+        <br /> <!--TODO: temp formatting fix -->
+      <% end %>
+    <% end %>
   <tbody>
 </table>
 
