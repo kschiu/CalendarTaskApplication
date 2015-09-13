@@ -1,57 +1,36 @@
-<!-- <h1>Listing events</h1>
- -->
-<table>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr><%= event.startDateTime %><%= event.endDateTime %></tr>
-      <tr><%= event.summary %></tr>
-      <tr>
-    <%end%>
-  <tbody>
-</table>
-
-
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Status</th>
-      <th>Htmllink</th>
-      <th>Summary</th>
-      <th>Description</th>
-      <th>Startdate</th>
-      <th>Startdatetime</th>
-      <th>Starttimezone</th>
-      <th>Enddate</th>
-      <th>Enddatetime</th>
-      <th>Endtimezone</th>
-      <th>Endtimeunspecified</th>
-      <th>Recurrence</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.status %></td>
-        <td><%= event.htmlLink %></td>
-        <td><%= event.summary %></td>
-        <td><%= event.description %></td>
-        <td><%= event.startDate %></td>
-        <td><%= event.startDateTime %></td>
-        <td><%= event.startTimeZone %></td>
-        <td><%= event.endDate %></td>
-        <td><%= event.endDateTime %></td>
-        <td><%= event.endTimeZone %></td>
-        <td><%= event.endTimeUnspecified %></td>
-        <td><%= event.recurrence %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table> -->
+<% @events.each do |event| %>
+  <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <p class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class=""><%=event.summary%></a></p>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+            <% event.tasks.each do |task| %>
+              <tr>
+                <% if task.is_complete == true %>
+                  <td class="centered"><%= image_tag("icons/full.png", size: "16") %></td>
+                <% else %>
+                  <td class="centered"><%= link_to(image_tag("icons/empty.png", size: "16"), edit_task_path(task, is_complete: true, from: 'event')) %></td>
+                <% end %>
+                <td><%= link_to task.name, task_path(task) %></td>x
+              </tr></br>
+            <% end %>
+          <div class="row">
+            <input type="hidden" name="count" value="1" />
+                <div class="control-group" id="fields">
+                    <div class="controls" id="profs"> 
+                        <form class="input-append">
+                            <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8"/><button id="b1" class="btn add-more" type="button">+</button></div>
+                        </form>
+                    <br></div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+<% end %>
 
 <br>
 
