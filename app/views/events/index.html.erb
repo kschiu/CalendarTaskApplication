@@ -1,6 +1,17 @@
-<h1>Listing events</h1>
-
+<!-- <h1>Listing events</h1>
+ -->
 <table>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr><%= event.startDateTime %><%= event.endDateTime %></tr>
+      <tr><%= event.summary %></tr>
+      <tr>
+    <%end%>
+  <tbody>
+</table>
+
+
+<!-- <table>
   <thead>
     <tr>
       <th>Status</th>
@@ -40,7 +51,7 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
 <br>
 

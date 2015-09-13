@@ -4,22 +4,20 @@
 body{
 	margin-right:5%;
 	margin-left:-5%;
-	margin-top:0%;
+	margin-top:3%;
 	margin-bottom: 3%;
 }
 
-h1, h3{ 
-/* 2015: */
+.navbar #brand{
 font-family: AvenirNext-UltraLight;
 font-weight: 100;
-font-size: 30px;
-color: #000000;
-line-height: 122px;
-/*letter-spacing: 10px;*/
+font-size: 25px;
 }
 
-.calendar h1{
-	font-weight: 30;
+.navbar #nav{
+font-family: AvenirNext-UltraLight;
+font-weight: 100;
+font-size: 20px;
 }
 
 
@@ -32,37 +30,35 @@ background: #72C3E2;
 /* Wednesday: */
 #today-month{
 font-family: AvenirNext-UltraLight;
-font-size: 24px;
+font-size: 35px;
 color: #FFFFFF;
-line-height: 41px;
+line-height: 50px;
 }
 
 /* 9: */
 #today-date{
 font-family: AvenirNext-UltraLight;
-font-size: 103px;
+font-size: 35px;
 color: #FFFFFF;
-line-height: 141px;
+line-height: 50px;
+text-align:right;
 }
 
 #today-year{ 
     font-family: AvenirNext-UltraLight;
-    font-size: 103px;
+    font-size: 80px;
     color: #000;
-    line-height: 141px;
+    line-height: 80px;
 } 
 
-#cal { 
-    font: 24px "Helvetica Neue", Helvatica, Arial, san-serif; 
-}
 
 #cal td { 
 	font-family: AvenirNext-UltraLight;
 	font-size: 20px;
 	color: #000000;
 	line-height: 41px;
-    width:70px; 
-    height:70px; 
+    width:100px; 
+    height:80px; 
     text-align:center;
 } 
 

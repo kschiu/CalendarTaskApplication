@@ -7,54 +7,76 @@
   <%= csrf_meta_tags %>
 </head>
 
+
 <body>
-    <div id="main-container" class="container">
-    	 <div class="container">
-        <div class="header">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Home</a>
-                    </li>
-                    <li role="presentation"><a href="">Calendar</a>
-                    </li>
-                    <li role="presentation"><a href="">Sign Up</a>
-                    </li>
-                </ul>
-            </nav>
-            <h3 class="text-muted">CALENDAR &amp; TASKS </h3>
-        </div>
-	  	<div class="row" id="cal">
-	      <div class="col-xs-7"> 
-	      	<p id="today-year"><%= Date.today.strftime("%Y") %></p>
-	        <table id="months">
-	          <td>jan</td><td>feb</td><td>mar</td><td>apr</td><td>may</td>
-	          <td>jun</td><td>jul</td><td>aug</td><td>sep</td><td>oct</td><td>nov</td><td>dec</td>
-	        </table>    
+    <div id="main-container">
+    	<div class="container">
+				<nav class="navbar">
+				  <div class="container-fluid">
+				    <!-- Brand and toggle get grouped for better mobile display -->
+				    <div class="navbar-header">
+				      <a class="navbar-brand" id="brand" href="#">CALENDAR & TASKS</a>
+				    </div>
 
-	      	<table id="days"> 
-	          <td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thu</td><td>fri</td><td>sat</td>
-	        </table> 
+				    <!-- Collect the nav links, forms, and other content for toggling -->
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      <ul class="nav navbar-nav navbar-right">
+				        <li class="active" id="nav"><a href="#">Month <span class="sr-only">(current)</span></a></li>
+				        <li><a href="#" id="nav">Week</a></li>
+				        <li class="dropdown" id="nav">
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				            <li ><a href="#">Action</a></li>
+				            <li><a href="#">Another action</a></li>
+				            <li><a href="#">Something else here</a></li>
+				            <li role="separator" class="divider"></li>
+				            <li><a href="#">Separated link</a></li>
+				          </ul>
+				        </li>
+				      </ul>
+				    </div><!-- /.navbar-collapse -->
+				  </div><!-- /.container-fluid -->
+				</nav>
 
-	        <div id="cal-frame">
-	          <table class="curr"> 
-	            <tbody> 
-	              <tr><td class="nil"></td><td class="nil"></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr> 
-	              <tr><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td class="today">11</td><td>12</td></tr> 
-	              <tr><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td></tr> 
-	              <tr><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td></tr> 
-	              <tr><td>27</td><td>28</td><td>29</td><td>30</td><td class="nil"></td><td class="nil"></td><td class="nil"></td></tr> 
-	            </tbody> 
-	          </table> 
-	        </div> 
-	      </div>
+		  	<div class="row" id="cal">
+		      <div class="col-xs-7"> 
+		      	<p id="today-year"><%= Date.today.strftime("%Y") %></p>
+		       
+		        <table id="months">
+		          <td>jan</td><td>feb</td><td>mar</td><td>apr</td><td>may</td>
+		          <td>jun</td><td>jul</td><td>aug</td><td>sep</td><td>oct</td><td>nov</td><td>dec</td>
+		        </table>    
 
-	      <div class="col-xs-4 col-xs-offset-1" id="right">
-	      	<p id="today-month"><%= Date.today.strftime("%B") %></p>
-	      	<p id="today-date"><%= Date.today.strftime("%A") %></p>
-	      	<p id="today-date"><%= Date.today.strftime("%d") %></p>
-        	<%= yield %>
-      	</div>
-	   	</div>
+		      	<table id="days"> 
+		          <td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thu</td><td>fri</td><td>sat</td>
+		        </table> 
+
+		        <div id="cal-frame">
+		          <table class="curr"> 
+		            <tbody> 
+		              <tr><td class="nil"></td><td class="nil"></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr> 
+		              <tr><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td class="today">11</td><td>12</td></tr> 
+		              <tr><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td></tr> 
+		              <tr><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td></tr> 
+		              <tr><td>27</td><td>28</td><td>29</td><td>30</td><td class="nil"></td><td class="nil"></td><td class="nil"></td></tr> 
+		            </tbody> 
+		          </table> 
+		        </div> 
+		      </div>
+
+		      <div class="col-xs-4 col-xs-offset-1" id="right">
+		      	<div class="col-xs-3">
+		      		<p id="today-month"><%= Date.today.strftime("%A") %></p>
+		      		<p id="today-month"><%= Date.today.strftime("%B") %></p>
+		      	</div>
+		      	<div class="col-xs-1">
+		      		<p id="today-date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= Date.today.strftime("%d") %></p>
+		      	</div>
+	        	<br/><br/><br/><br/><br/>
+	        	<%= yield %>
+	      	</div>
+		   	</div>
+		  </div>
     </div>
 
 </body>
