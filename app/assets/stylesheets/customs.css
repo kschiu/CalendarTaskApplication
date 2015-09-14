@@ -103,6 +103,7 @@ letter-spacing: -5.5px;
 		border-radius: 4px;
 } 
 
+div.hidden { display: none; }
 
 /* ----- SimpleForm Styles ----- */
 .simple_form .label {

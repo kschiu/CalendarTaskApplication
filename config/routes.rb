@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :calendars
+
   resources :tasks
 
   resources :events

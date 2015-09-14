@@ -39,7 +39,8 @@
 				</nav>
 
 				<!-- Calendar partials -->
-				<%= render partial: 'partials/calendar' %>
+				<%#= render partial: 'partials/calendar' %>
+				<%= yield %>
 
 		      <div class="col-xs-4 col-xs-offset-1" id="absolute-right">
 		      	<div class="col-xs-offset-4 col-xs-4">
@@ -50,7 +51,7 @@
 		      		<p id="today-date"><%= Date.today.strftime("%d") %></p>
 		      	</div>
 	        	<br/><br/><br/><br/><br/>
-	        	<%= yield %>
+	        	<%#= yield %>
 	      	</div>
 		   	</div>
 		  </div>

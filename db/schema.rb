@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911185221) do
+ActiveRecord::Schema.define(version: 20150914205708) do
+
+  create_table "calendars", force: true do |t|
+    t.string   "year",       default: "2015"
+    t.string   "month",      default: "9"
+    t.string   "day",        default: "16"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.string   "status"
