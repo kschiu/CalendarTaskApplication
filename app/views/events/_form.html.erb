@@ -1,4 +1,5 @@
-<%= form_for(@event) do |f| %>
+<%#= form_for(@event) do |f| %>
+<%= simple_form_for @event, html: { class: 'form-horizontal' } do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -11,14 +12,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+<%= f.input :summary, label: "Event" %>
+<%= f.input :startDate, label: "Start Date" %>
+<%= f.input :startDateTime, label: "Start Time" %>
+<%= f.input :endDate, label: "End Date" %>
+<%= f.input :endDateTime, label: "End Time" %>
+<%= f.input :endTimeUnspecified, label: "All Day Event" %>
+<%= f.input :description %>
+<!--   <div class="field">
     <%= f.label :summary, "Event" %><br>
     <%= f.text_field :summary %>
-  </div>
+  </div>-->
   
   <!-- location field placeholder -->
 
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :startDate, "Start Date" %><br>
     <%= f.date_select :startDate %>
   </div>
@@ -45,7 +53,7 @@
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
-  </div>
+  </div> -->
   
   <div class="actions">
     <%= f.submit %>
