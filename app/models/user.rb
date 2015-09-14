@@ -5,20 +5,17 @@ class User < ActiveRecord::Base
 	       :recoverable, :rememberable, :trackable, :validatable,
 	       :omniauthable, :omniauth_providers => [:google_oauth2]
 
-	def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
-	  data = access_token.info
-	  if (User.admins.include?(data.email))
-	    user = User.find_by(email: data.email)
-	    if user
-	      user.provider = access_token.provider
-	      user.uid = access_token.uid
-	      user.token = access_token.credentials.token
-	      user.save
-	      user
-	    else
-	      redirect_to new_user_registration_path, notice: "Error."
+	def self.from_omniauth(access_token)
+	    data = access_token.info
+	    user = User.where(:email => data["email"]).first
+	    
+	    # Uncomment the section below if you want users to be created if they don't exist
+	    unless user
+	        user = User.create(email: data["email"],
+	           password: Devise.friendly_token[0,20]
+	        )
 	    end
-	  end
+	    user
 	end
 
 end

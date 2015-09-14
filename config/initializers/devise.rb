@@ -17,8 +17,8 @@ Devise.setup do |config|
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
   require 'omniauth-google-oauth2'
-    config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'],
-    ENV['GOOGLE_CLIENT_SECRET'],
+    config.omniauth :google_oauth2, Rails.application.secrets.GOOGLE_CLIENT_ID,
+    Rails.application.secrets.GOOGLE_CLIENT_SECRET,
     { access_type: "offline", approval_prompt: "",
     scope: 'userinfo.email,calendar' }
   # ==> ORM configuration
