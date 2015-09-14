@@ -9,7 +9,7 @@
 
 
 <body>
-    <div id="main-container">
+    <div id="main-container" class="relative">
     	<div class="container">
 				<nav class="navbar">
 				  <div class="container-fluid">
@@ -54,7 +54,7 @@
 		        <div id="cal-frame">
 		          <table class="curr"> 
 							  <tr>
-							  	<%= month = 1 %>
+							  	<%= month = Date.today.month %>
 							 	 	<% @beginning_of_month = Date.civil(2015, month, 1) %>
 							  	<% @end_of_month = Date.civil(2015, month, -1) %>
 
@@ -71,13 +71,13 @@
 		        </div> 
 		      </div>
 
-		      <div class="col-xs-4 col-xs-offset-1" id="right">
-		      	<div class="col-xs-3">
-		      		<p id="today-month"><%= Date.today.strftime("%A") %></p>
+		      <div class="col-xs-4 col-xs-offset-1" id="absolute-right">
+		      	<div class="col-xs-offset-4 col-xs-4">
+		      		<p id="today-wdate"><%= Date.today.strftime("%A") %></p>
 		      		<p id="today-month"><%= Date.today.strftime("%B") %></p>
 		      	</div>
-		      	<div class="col-xs-1">
-		      		<p id="today-date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= Date.today.strftime("%d") %></p>
+		      	<div class="col-xs-offset-1 col-xs-1">
+		      		<p id="today-date"><%= Date.today.strftime("%d") %></p>
 		      	</div>
 	        	<br/><br/><br/><br/><br/>
 	        	<%= yield %>

@@ -14,17 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
 //= require_tree .
 
-
-/*$(document).on("page:load ready", function(){
-    $("input.datepicker").datepicker();
-});*/
-
 // Datepicker code
-$(function() {
-	$(".datepicker").datepicker({
-		format: 'mm/dd/YYYY'
-	});
-});
+// $(function() {
+// 	$(".datepicker").datepicker({
+// 		format: 'mm/dd/YYYY'
+// 	});
+// });
 

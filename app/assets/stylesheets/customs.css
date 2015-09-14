@@ -21,34 +21,47 @@ font-size: 20px;
 }
 
 
-#right{
-/* Rectangle 1: */
-background: #72C3E2;
+#absolute-right{
+position:absolute; top:15%; bottom:20px; right:17%;
+width:28%;
+background-color:#72C3E2;
 }
 
 
 /* Wednesday: */
 #today-month{
 font-family: AvenirNext-UltraLight;
-font-size: 35px;
+font-size: 25px;
 color: #FFFFFF;
-line-height: 50px;
+line-height: 30px;
+vertical-align: bottom;
 }
 
 /* 9: */
+#today-wdate{
+font-family: AvenirNext-UltraLight;
+font-size: 25px;
+color: #FFFFFF;
+line-height: 20px;
+padding-top: 30px;
+}
+
 #today-date{
 font-family: AvenirNext-UltraLight;
-font-size: 35px;
+font-size: 70px;
 color: #FFFFFF;
-line-height: 50px;
-text-align:right;
+line-height: 120px;
+letter-spacing: -5.5px;
+/*text-align:right;*/
 }
 
 #today-year{ 
     font-family: AvenirNext-UltraLight;
-    font-size: 80px;
+    font-size: 70px;
     color: #000;
-    line-height: 80px;
+    line-height: 120px;
+    padding-left: 2%;
+    letter-spacing: -5px;
 } 
 
 
@@ -89,3 +102,52 @@ text-align:right;
     color:#fff; 
 		border-radius: 4px;
 } 
+
+
+/* ----- SimpleForm Styles ----- */
+.simple_form .label {
+  clear: left;
+  color: #FFF;
+  display: block;
+  font-style: italic;
+}
+
+div.boolean label, label.collection_radio_buttons {
+  float: none;
+  margin: 0;
+}
+
+label.collection_radio_buttons {
+  margin-right: 10px;
+  vertical-align: -2px;
+  margin-left: 2px;
+}
+
+.field_with_errors {
+  background-color: #ff3333;
+}
+
+.simple_form .error {
+  clear: left;
+  color: black;
+  display: block;
+  margin-left: 120px;
+}
+
+
+input.radio {
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+input.check_boxes {
+  margin-left: 3px;
+  vertical-align: -3px;
+}
+
+label.collection_check_boxes {
+  float: none;
+  margin: 0;
+  vertical-align: -2px;
+  margin-left: 2px;
+}

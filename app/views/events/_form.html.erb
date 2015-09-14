@@ -1,4 +1,3 @@
-<%#= form_for(@event) do |f| %>
 <%= simple_form_for @event, html: { class: 'form-horizontal' } do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -12,48 +11,13 @@
     </div>
   <% end %>
 
-<%= f.input :summary, label: "Event" %>
-<%= f.input :startDate, label: "Start Date" %>
-<%= f.input :startDateTime, label: "Start Time" %>
-<%= f.input :endDate, label: "End Date" %>
-<%= f.input :endDateTime, label: "End Time" %>
-<%= f.input :endTimeUnspecified, label: "All Day Event" %>
-<%= f.input :description %>
-<!--   <div class="field">
-    <%= f.label :summary, "Event" %><br>
-    <%= f.text_field :summary %>
-  </div>-->
-  
-  <!-- location field placeholder -->
-
-<!--   <div class="field">
-    <%= f.label :startDate, "Start Date" %><br>
-    <%= f.date_select :startDate %>
-  </div>
-  <div class="field">
-    <%= f.label :startDateTime, "Start Time" %><br>
-    <%= f.datetime_select :startDateTime %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :endDate, "End Date" %><br>
-    <%= f.date_select :endDate %>
-  </div>
-  <div class="field">
-    <%= f.label :endDateTime, "End Time" %><br>
-    <%= f.datetime_select :endDateTime %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :endTimeUnspecified, "All Day Event" %><br>
-    <%= f.check_box :endTimeUnspecified %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div> -->
+  <%= f.input :summary, placeholder: 'Event'%>
+  <%= f.input :startDate, as: :date_picker, :label => 'Start Date'%>
+  <%= f.input :startDateTime, label: "Start Time" %>
+  <%= f.input :endDate, as: :date_picker, :label => 'End Date'%>
+  <%= f.input :endDateTime, label: "End Time" %>
+  <%= f.input :endTimeUnspecified, label: "All Day Event" %>
+  <%= f.input :description %>
   
   <div class="actions">
     <%= f.submit %>
