@@ -16,3 +16,15 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+
+/*$(document).on("page:load ready", function(){
+    $("input.datepicker").datepicker();
+});*/
+
+// Datepicker code
+$(function() {
+	$(".datepicker").datepicker({
+		format: 'mm/dd/YYYY'
+	});
+});
+
