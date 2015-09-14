@@ -32,7 +32,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 #simple_form
 gem 'simple_form'
 
-# gem 'bootstrap-datepicker-rails'
+# datepicker
 gem 'momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'eonasdan', submodules: true
 
