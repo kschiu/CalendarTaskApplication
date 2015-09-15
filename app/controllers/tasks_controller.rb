@@ -19,6 +19,16 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    unless params[:status].nil?
+      if params[:status] == 'completed'
+        @task.update_attribute(:is_complete, true)
+        @task.save!
+      else
+        @task.update_attribute(:is_complete, false)
+        @task.save!
+      end
+      redirect_to events_path 
+    end
   end
 
   # POST /tasks
@@ -40,14 +50,10 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.update_attributes(task_params)
+      redirect_to @calendar
+    else
+      render :action => 'edit'
     end
   end
 
@@ -69,6 +75,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:event_id, :name, :description, :is_complete)
+      params.require(:task).permit(:event_id, :name, :description, :end_date, :end_time, :is_complete)
     end
 end

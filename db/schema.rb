@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20150914205708) do
     t.integer  "event_id"
     t.string   "name"
     t.text     "description"
+    t.date     "end_date"
+    t.time     "end_time"
     t.boolean  "is_complete"
     t.datetime "created_at"
     t.datetime "updated_at"

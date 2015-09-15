@@ -28,11 +28,11 @@
             <% event.tasks.each do |task| %>
               <tr>
                 <% if task.is_complete == true %>
-                  <td class="centered"><%= image_tag("icons/full.png", size: "16") %></td>
+                  <td class="centered"><%= link_to(image_tag("icons/full.png", size: "16") , edit_task_path(task, status: 'uncomplete', from: 'event')) %></td>
                 <% else %>
-                  <td class="centered"><%= link_to(image_tag("icons/empty.png", size: "16"), edit_task_path(task, is_complete: true, from: 'event')) %></td>
+                  <td class="centered"><%= link_to(image_tag("icons/empty.png", size: "16"), edit_task_path(task, status: 'completed', from: 'event')) %></td>
                 <% end %>
-                <td><%= link_to task.name, task_path(task) %></td>x
+                <%= task.name %>
               </tr></br>
             <% end %>
           <div class="row">
