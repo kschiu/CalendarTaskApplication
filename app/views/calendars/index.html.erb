@@ -4,18 +4,18 @@
 
     <table id="months">
       <td></td>
-      <td><%= link_to 'jan', edit_calendar_path(@calendar, month: '1') %></td>
-      <td>feb</td>
-      <td>mar</td>
-      <td>apr</td>
-      <td>may</td>
-      <td>jun</td>
-      <td>jul</td>
-      <td>aug</td>
-      <td>sep</td>
-      <td>oct</td>
-      <td>nov</td>
-      <td>dec</td>
+      <td><%= link_to 'jan', edit_calendar_path(@calendar, status: '1_m') %></td>
+      <td><%= link_to 'feb', edit_calendar_path(@calendar, status: '2_m') %></td>
+      <td><%= link_to 'mar', edit_calendar_path(@calendar, status: '3_m') %></td>
+      <td><%= link_to 'apr', edit_calendar_path(@calendar, status: '4_m') %></td>
+      <td><%= link_to 'may', edit_calendar_path(@calendar, status: '5_m') %></td>
+      <td><%= link_to 'jun', edit_calendar_path(@calendar, status: '6_m') %></td>
+      <td><%= link_to 'jul', edit_calendar_path(@calendar, status: '7_m') %></td>
+      <td><%= link_to 'aug', edit_calendar_path(@calendar, status: '8_m') %></td>
+      <td><%= link_to 'sep', edit_calendar_path(@calendar, status: '9_m') %></td>
+      <td><%= link_to 'oct', edit_calendar_path(@calendar, status: '10_m') %></td>
+      <td><%= link_to 'nov', edit_calendar_path(@calendar, status: '11_m') %></td>
+      <td><%= link_to 'dec', edit_calendar_path(@calendar, status: '12_m') %></td>
     </table>    
 
     <table id="days"> 

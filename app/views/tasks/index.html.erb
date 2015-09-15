@@ -1,4 +1,7 @@
-<!-- <h1>Listing tasks</h1> -->
+<a href="#" id="body" data-type="textarea" data-resource="post" data-name="body" data-url="/posts/1" data-original-title="Enter body">
+  <%= textarea_format(@post.body) %>
+</a>
+
 <table>
   <thead>
     <tr>
@@ -17,6 +20,7 @@
         <td><%= task.is_complete %></td>
         <td><%= task.name %></td>
         <td><%= task.description %></td>
+
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>

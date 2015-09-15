@@ -35,6 +35,7 @@ gem 'simple_form'
 # datepicker
 gem 'momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'eonasdan', submodules: true
+gem 'bootstrap-editable-rails'
 
 gem 'google-api-client', :require => 'google/api_client'
 gem 'omniauth'

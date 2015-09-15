@@ -17,6 +17,8 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+//= require bootstrap-editable
+//= require bootstrap-editable-rails
 //= require_tree .
 
 // Datepicker code
