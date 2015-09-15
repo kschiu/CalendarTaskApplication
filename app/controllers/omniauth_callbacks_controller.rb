@@ -30,7 +30,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     puts "Upcoming events:"
     puts "No upcoming events found" if @result.data.items.empty?
     @result.data.items.each do |event|
-      puts event.summary, event.description,
+      puts event.summary, event.description
      end
 
   end
