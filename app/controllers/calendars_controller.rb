@@ -19,18 +19,20 @@ class CalendarsController < ApplicationController
   end
 
   def edit
-    # Handle shortcut deactivations
     unless params[:status].nil?
-      if params[:status].match(/_m/) # == 'deactivate_prj' || params[:status] == 'deactivate_asgn'
-        num = params[:status]
-        @calendar.update_attribute(:month, '2')
+      if params[:status].length == 4
+          str = params[:status].byteslice(0,2)
+        else
+          str = params[:status].byteslice(0,1)
+        end
+      if params[:status].match(/_m/) 
+        @calendar.update_attribute(:month, str)
         @calendar.save!
-      # elsif params[:status].match(/activate/) # == 'activate_prj' || params[:status] == 'activate_asgn'
-      #   @assignment.update_attribute(:active, true)
-      #   flash[:notice] = "#{@assignment.user.proper_name} was made active."
+      else
+        @calendar.update_attribute(:day, str)
+        @calendar.save!
       end
-      # redirect_to project_path(@assignment.project) if params[:status].match(/_prj/)
-      redirect_to calendars_path #if params[:status].match(/_asgn/)
+      redirect_to calendars_path 
     end
   end
 
