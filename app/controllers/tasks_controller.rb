@@ -27,7 +27,7 @@ class TasksController < ApplicationController
         @task.update_attribute(:is_complete, false)
         @task.save!
       end
-      redirect_to events_path 
+      redirect_to calendars_path 
     end
   end
 
