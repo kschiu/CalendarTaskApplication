@@ -1,3 +1,3 @@
 class Event < ActiveRecord::Base
-    # Testing comment
+    has_many :orders
 end

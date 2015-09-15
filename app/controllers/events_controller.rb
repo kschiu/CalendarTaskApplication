@@ -51,6 +51,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def show_all_tasks
+    @tasks = Tasks.filter()
+
+  end
+
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
