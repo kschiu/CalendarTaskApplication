@@ -21,27 +21,24 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     service = client.discovered_api('calendar', 'v3')
     @result = client.execute(
       :api_method => service.events.list,
-        :parameters => {:calendarId => 'primary',
-          :maxResults => 10,
-          :singleEvents => true,
-          :orderBy => 'startTime',
-          :timeMin => Time.now.iso8601},
-        :headers => {'Content-Type' => 'application/json'})
-    puts "Upcoming events:"
-    puts "No upcoming events found" if @result.data.items.empty?
-    @result.data.items.each do |event|
-      @new_event = Event.new(google_id: event.id,
-        summary: event.summary,
-        description: event.description,
-        status: event.status,
-        htmlLink: event.htmlLink,
-        recurrence: event.recurrence,
-        startDate: event.start.date,
-        startDateTime: event.start.dateTime,
-        endDate: event.end.date,
-        endDateTime: event.date.dateTime)
-      @new_event.save
-     end
+      :parameters => {:calendarId => 'primary',
+        :maxResults => 10,
+        :singleEvents => true,
+        :orderBy => 'startTime',
+        :timeMin => Time.now.iso8601},
+      :headers => {'Content-Type' => 'application/json'})
 
+    @result.data.items.each do |event|
+      e = Event.new()
+      e.google_id = event.id
+      e.summary = event.summary
+      e.description = event.description
+      e.status = event.status
+      e.htmlLink = event.htmlLink
+      e.startDate = event.start.date
+      e.endDate = event.end.date
+      e.save
+    end
   end
+
 end
