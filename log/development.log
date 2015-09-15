@@ -17647,3 +17647,724 @@ Processing by TasksController#new as HTML
   Rendered tasks/_form.html.erb (5.1ms)
   Rendered tasks/new.html.erb within layouts/application (7.7ms)
 Completed 200 OK in 121ms (Views: 120.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2015-09-15 17:21:08 -0400
+Processing by TasksController#new as HTML
+  Rendered tasks/_form.html.erb (4.3ms)
+  Rendered tasks/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 144ms (Views: 143.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:09 -0400
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.2ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"  WHERE "tasks"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered calendars/_events.html.erb (4.0ms)
+  Rendered calendars/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 127ms (Views: 125.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/icons/full.png" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/assets/icons/add.png" for 127.0.0.1 at 2015-09-15 17:21:11 -0400
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+Processing by CalendarsController#index as HTML
+  [1m[35mCalendar Load (0.1ms)[0m  SELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1
+  [1m[36mEvent Load (0.1ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"  WHERE "tasks"."event_id" = ?  [["event_id", 1]]
+  Rendered calendars/_events.html.erb (2.0ms)
+  Rendered calendars/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 127ms (Views: 126.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/icons/full.png" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/assets/icons/add.png" for 127.0.0.1 at 2015-09-15 17:23:28 -0400
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2015-09-15 17:23:33 -0400
+Processing by TasksController#new as HTML
+  Rendered tasks/_form.html.erb (4.4ms)
+  Rendered tasks/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 128ms (Views: 127.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events"
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"  WHERE "tasks"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered calendars/_events.html.erb (3.0ms)
+  Rendered calendars/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 128ms (Views: 126.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/icons/full.png" for 127.0.0.1 at 2015-09-15 17:23:42 -0400
+
+
+Started GET "/assets/icons/add.png" for 127.0.0.1 at 2015-09-15 17:23:43 -0400
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2015-09-15 17:29:43 -0400
+Processing by TasksController#new as HTML
+  Rendered tasks/_form.html.erb (6.0ms)
+  Rendered tasks/new.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 124ms (Views: 123.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2015-09-15 17:29:46 -0400
+Processing by TasksController#new as HTML
+  Rendered tasks/_form.html.erb (4.2ms)
+  Rendered tasks/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 131ms (Views: 130.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2015-09-15 17:29:50 -0400
+Processing by TasksController#new as HTML
+  Rendered tasks/_form.html.erb (4.9ms)
+  Rendered tasks/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 121ms (Views: 120.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+Processing by EventsController#index as HTML
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks"  WHERE "tasks"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered events/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 126ms (Views: 124.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/icons/full.png" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/assets/icons/add.png" for 127.0.0.1 at 2015-09-15 17:31:46 -0400
+
+
+Started GET "/events/index" for 127.0.0.1 at 2015-09-15 17:31:49 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[35mEvent Load (0.2ms)[0m  SELECT  "events".* FROM "events"  WHERE "events"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=index):
+  app/controllers/events_controller.rb:67:in `set_event'
+
+
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.0ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.1ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"  WHERE "tasks"."event_id" = ?  [["event_id", 1]]
+  Rendered events/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 116ms (Views: 115.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/icons/full.png" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
+
+
+Started GET "/assets/icons/add.png" for 127.0.0.1 at 2015-09-15 17:31:53 -0400
