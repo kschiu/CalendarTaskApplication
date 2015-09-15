@@ -35,22 +35,51 @@
                 <%= task.name %>
               </tr></br>
             <% end %>
-          <div class="row">
+          </br>
+            <%= link_to(image_tag("icons/add.png", size: "16"), new_task_path )%>
+<!--           <div class="row">
             <input type="hidden" name="count" value="1" />
                 <div class="control-group" id="fields">
                     <div class="controls" id="profs"> 
                         <form class="input-append">
-                            <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8"/><button id="b1" class="btn add-more" type="button"><%= link_to 'New Task', new_task_path %></button></div>
+                            <div id="field"><input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Type something" data-items="8"/><button id="b1" class="btn add-more" type="button"><%= link_to(image_tag("icons/add.png", size: "16"), new_task_path )%></div>
                         </form>
                     <br></div>
                 </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
   </div>
   <% end %>
 <% end %>
+
+
+<script>
+$(function () {
+
+    var active = true;
+
+    $('#collapse-init').click(function () {
+        if (active) {
+            active = false;
+            $('.panel-collapse').collapse('show');
+            $('.panel-title').attr('data-toggle', '');
+            $(this).text('Hide your tasks');
+        } else {
+            active = true;
+            $('.panel-collapse').collapse('hide');
+            $('.panel-title').attr('data-toggle', 'collapse');
+            $(this).text('Show all tasks');
+        }
+    });
+    
+    $('#accordion').on('show.bs.collapse', function () {
+        if (active) $('#accordion .in').collapse('hide');
+    });
+
+});
+</script>
 
 
 
