@@ -1,16 +1,15 @@
-<br/><br/><br/><br/><br/><br/><br/><!-- layout fix  -->
 
 <% Event.all.each do |event| %>
   <% if event.startDate == Date.civil(@calendar.year.to_i, @calendar.month.to_i, @calendar.day.to_i) %> 
   <div class="panel-group" id="accordion">
-      <div class="panel panel-default">
+      <div class="panel panel-default active">
         <div class="panel-heading">
           <p class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#<%= event.id %>">
               <table>
                 <tbody>
-                  <tr><%= event.startDateTime.strftime('%l:%M') %> - <%= event.endDateTime.strftime('%l:%M %p') %></tr>
-                  <tr><h4><%= event.summary %></h4></tr> <!-- Name of event -->
+                  <tr ><%= event.startDateTime.strftime('%l:%M') %> - <%= event.endDateTime.strftime('%l:%M %p') %></tr>
+                  <tr ><h4><%= event.summary %></h4></tr> 
                   <%# if event.location is not nil %>
                     <!--<tr><%#= event.location %></tr>--> <!-- TODO: ensure event has location attribute -->
                   <%# end %>
@@ -43,11 +42,12 @@
   <% end %>
   <br/>
 <% end %>
+<button id="collapse-init" class="btn btn-sm btn-default">
+    Show your tasks
+</button>
 
 <br/><br/><br/><br/>
-<button id="collapse-init" class="btn btn-primary">
-    See all your tasks
-</button>
+
 
 <script>
 $(function () {
@@ -64,7 +64,7 @@ $(function () {
             active = true;
             $('.panel-collapse').collapse('hide');
             $('.panel-title').attr('data-toggle', 'collapse');
-            $(this).text('Show all tasks');
+            $(this).text('Show your tasks');
         }
     });
     

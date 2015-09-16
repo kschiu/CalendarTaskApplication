@@ -39,7 +39,9 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.end_time = Date.civil(Calendar.first.year.to_i, Calendar.first.month.to_i, Calendar.first.day.to_i)
     @task.save!
+    redirect_to @task
     # respond_to do |format|
     #   if @task.save
     #     format.html { redirect_to @task, notice: 'Task was successfully created.' }

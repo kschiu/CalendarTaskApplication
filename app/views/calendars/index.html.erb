@@ -3,7 +3,6 @@
     <p id="today-year"><%= @calendar.year %></p>
 
     <table id="months">
-      <td></td>
       <td><%= link_to 'jan', edit_calendar_path(@calendar, status: '1_m') %></td>
       <td><%= link_to 'feb', edit_calendar_path(@calendar, status: '2_m') %></td>
       <td><%= link_to 'mar', edit_calendar_path(@calendar, status: '3_m') %></td>
@@ -54,7 +53,8 @@
       <p id="today-date"><%= Date.new(@calendar.year.to_i, @calendar.month.to_i, @calendar.day.to_i).day %></p>
     </div>
 
-    <%= render "events" %>
-    
+    <div class="col-xs-12">
+      <%= render "events" %>
+    </div>
   </div>
 
