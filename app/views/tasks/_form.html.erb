@@ -1,7 +1,8 @@
-<%= simple_form_for @task, html: { class: 'form-horizontal' } do |f| %>
-
+<%#= simple_form_for @task, html: { class: 'form-horizontal' } do |f| %>
+<%= simple_form_for @task, remote: true do |f|   %>
   <%= f.input :name, placeholder: 'Event'%>
-  <%= f.input :end_time, as: :datetime_picker %>
+  <%= f.input :end_time, as: :date_picker %>
+  <div style="display:none;"><%= f.input :event_id%></div>
   
   <div class="actions">
     <%= f.submit %>

@@ -1,10 +1,7 @@
-<br/><br/>
-<br/><br/>
-<br/><br/>
-<br/>
+<br/><br/><br/><br/><br/><br/><br/><!-- layout fix  -->
 
 <% Event.all.each do |event| %>
-  <% if event.startDate == Date.civil(@calendar.year.to_i, @calendar.month.to_i, @calendar.day.to_i) %> <!--TODO: Should be @calendar.day -->
+  <% if event.startDate == Date.civil(@calendar.year.to_i, @calendar.month.to_i, @calendar.day.to_i) %> 
   <div class="panel-group" id="accordion">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -12,16 +9,12 @@
             <a data-toggle="collapse" data-parent="#accordion" href="#<%= event.id %>">
               <table>
                 <tbody>
-                    <% if event.startDate == Date.today %> <!--TODO: Correspond with @date -->
-                      <table>
-                        <tr><%= event.startDateTime.strftime('%l:%M') %> - <%= event.endDateTime.strftime('%l:%M %p') %></tr>
-                        <tr><h4><%= event.summary %></h4></tr> <!-- Name of event -->
-                        <%# if event.location is not nil %>
-                          <!--<tr><%#= event.location %></tr>--> <!-- TODO: ensure event has location attribute -->
-                        <%# end %>
-                        <!--<tr><%#= event.startDate %></tr>--> <!-- for debugging -->
-                      </table>
-                    <% end %>
+                  <tr><%= event.startDateTime.strftime('%l:%M') %> - <%= event.endDateTime.strftime('%l:%M %p') %></tr>
+                  <tr><h4><%= event.summary %></h4></tr> <!-- Name of event -->
+                  <%# if event.location is not nil %>
+                    <!--<tr><%#= event.location %></tr>--> <!-- TODO: ensure event has location attribute -->
+                  <%# end %>
+                  <!--<tr><%#= event.startDate %></tr>--> <!-- for debugging -->
                 <tbody>
               </table>
             </a>
@@ -33,19 +26,22 @@
             <% event.tasks.each do |task| %>
               <tr>
                 <% if task.is_complete == true %>
-                  <td class="centered"><%= link_to(image_tag("icons/full.png", size: "16") , edit_task_path(task, status: 'uncomplete', from: 'event')) %></td>
+                  <td class="centered"><%= link_to(image_tag("icons/full.png", size: "16") , edit_task_path(task, status: 'incomplete', from: 'event')) %></td>
                 <% else %>
                   <td class="centered"><%= link_to(image_tag("icons/empty.png", size: "16"), edit_task_path(task, status: 'completed', from: 'event')) %></td>
                 <% end %>
                 <%= task.name %>
               </tr></br>
             <% end %>
-          </br>
-            <%= link_to(image_tag("icons/add.png", size: "16"), new_task_path )%>
+            </br>
+            <%= link_to(image_tag("icons/add.png", size: "16"),  new_task_path(id: event.id, source: 'event'), remote: true)%>
+            <br />
+            <div id="task-form" style="display:none;"></div>
         </div>
       </div>
   </div>
   <% end %>
+  <br/>
 <% end %>
 
 <br/><br/><br/><br/>
