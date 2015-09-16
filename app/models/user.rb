@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 	       :recoverable, :rememberable, :trackable, :validatable,
 	       :omniauthable, :omniauth_providers => [:google_oauth2]
+	
+	# @request.env["devise.mapping"] = Devise.mappings[:user]
 
 	def self.from_omniauth(access_token)
 	    data = access_token.info

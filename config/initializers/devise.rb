@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'ce7d26b1d341adffc95c0bd0c2cc55c34b557719ddf36deb08385ff602d215a3da89ec032a377a06398093261eb3a8f72461e22cf5a5630fbf52613017c39dce'
+  # config.secret_key = '45da00e4e7a6c363aa2d2190b0fc9a60464302e1f8ad868e1204e9f94bace3d18e2d388eb846ee10a602671ec5fad6c2b679866b0982a56114ebf7ded9961521'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -16,11 +16,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
-  require 'omniauth-google-oauth2'
-    config.omniauth :google_oauth2, Rails.application.secrets.GOOGLE_CLIENT_ID,
-    Rails.application.secrets.GOOGLE_CLIENT_SECRET,
-    { access_type: "offline", approval_prompt: "",
-    scope: 'userinfo.email,calendar' }
+
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
@@ -103,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'd95331b08c4ce65d95dfa1217d89314d79a0f66ae40286c075a3894ab05c655503740ff9c04e81c8f97fcf51125a62ba9536a7ea42cc49418548671103117c72'
+  # config.pepper = 'cba5ce659734846442e93341ecfc9812e01f4af0c31339e0c4a3541c1b76719a6267138f7127a5952ff2b48273f8c5075f622f60b88e2501d7255640f22c6e4b'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

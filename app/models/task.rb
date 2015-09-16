@@ -1,3 +1,3 @@
 class Task < ActiveRecord::Base
-    belongs_to :orders, dependent: :destroy
+    belongs_to :event, dependent: :destroy
 end
