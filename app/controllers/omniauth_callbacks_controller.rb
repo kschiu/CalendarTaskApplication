@@ -40,7 +40,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       e.status = event.status
       e.htmlLink = event.htmlLink
       e.startDate = event.start.date
+      e.startDateTime = event.start
       e.endDate = event.end.date
+      e.endDateTime = event.end
       e.save
     end
   end

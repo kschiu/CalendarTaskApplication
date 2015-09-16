@@ -8,7 +8,7 @@
             <a data-toggle="collapse" data-parent="#accordion" href="#<%= event.id %>">
               <table>
                 <tbody>
-                  <tr ><%= event.startDateTime.strftime('%l:%M') %> - <%= event.endDateTime.strftime('%l:%M %p') %></tr>
+                  <!-- <tr ><%#= event.startDateTime.strftime('%l:%M') %> - <%#= event.endDateTime.strftime('%l:%M %p') %></tr> -->
                   <tr ><h4><%= event.summary %></h4></tr> 
                   <%# if event.location is not nil %>
                     <!--<tr><%#= event.location %></tr>--> <!-- TODO: ensure event has location attribute -->

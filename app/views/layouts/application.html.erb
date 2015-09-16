@@ -8,7 +8,14 @@
 </head>
 
 
+
 <body>
+	<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
     <div id="main-container" class="relative">
     	<div class="container-fluid">
 				<nav class="navbar">
@@ -38,12 +45,8 @@
 
 				<%= yield %>
 
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+</div>
+</div>
 
 
 
