@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   devise_scope :user do
-    get "showSignUp" => "devise/sessions#new"
+    root :to => "devise/sessions#new"
   end
 
   # devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
