@@ -1,0 +1,152 @@
+/*Padding, Borders*/
+/* Year */
+
+body{
+	margin-right:5%;
+	margin-left:-5%;
+	margin-top:3%;
+	margin-bottom: 3%;
+}
+
+.navbar #brand{
+font-family: AvenirNext-UltraLight;
+font-weight: 100;
+font-size: 25px;
+}
+
+.navbar #nav{
+font-family: AvenirNext-UltraLight;
+font-weight: 100;
+font-size: 20px;
+}
+
+
+#absolute-right{
+position:absolute; top:15%; bottom:-100%; right:17%;
+width:28%;
+background-color:#72C3E2;
+}
+
+#fix-left{
+  position: fixed; left:4%;right:45%;
+}
+/* Wednesday: */
+#today-month{
+font-family: AvenirNext-UltraLight;
+font-size: 25px;
+color: #FFFFFF;
+line-height: 30px;
+vertical-align: bottom;
+}
+
+/* 9: */
+#today-wdate{
+font-family: AvenirNext-UltraLight;
+font-size: 25px;
+color: #FFFFFF;
+line-height: 20px;
+padding-top: 30px;
+}
+
+#today-date{
+font-family: AvenirNext-UltraLight;
+font-size: 70px;
+color: #FFFFFF;
+line-height: 120px;
+letter-spacing: -7px;
+}
+
+#today-year{ 
+    font-family: AvenirNext-UltraLight;
+    font-size: 70px;
+    color: #000;
+    line-height: 120px;
+    padding-left: 2%;
+    letter-spacing: -5px;
+} 
+
+
+#cal td { 
+	font-family: AvenirNext-UltraLight;
+	font-size: 20px;
+	color: #000000;
+	line-height: 41px;
+    width:100px; 
+    height:80px; 
+    text-align:center;
+} 
+
+
+#cal #months td { 
+    height:26px; 
+    line-height: 26px; 
+    text-transform: uppercase; 
+    font-size:90%; 
+    color:#000; 
+} 
+
+#cal #days td { 
+    height:60px; 
+    line-height: 26px; 
+    text-transform:uppercase; 
+    font-size:90%; 
+    color:#000; 
+} 
+
+#calframe #today td { 
+    background:#72C3E2; 
+    color:#72C3E2;
+		border-radius: 4px;
+} 
+
+div.hidden { display: none; }
+
+/* ----- SimpleForm Styles ----- */
+.simple_form .label {
+  clear: left;
+  color: #FFF;
+  display: block;
+  font-style: italic;
+}
+
+div.boolean label, label.collection_radio_buttons {
+  float: none;
+  margin: 0;
+}
+
+label.collection_radio_buttons {
+  margin-right: 10px;
+  vertical-align: -2px;
+  margin-left: 2px;
+}
+
+.field_with_errors {
+  background-color: #ff3333;
+}
+
+.simple_form .error {
+  clear: left;
+  color: black;
+  display: block;
+  margin-left: 120px;
+}
+
+
+input.radio {
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+input.check_boxes {
+  margin-left: 3px;
+  vertical-align: -3px;
+}
+
+label.collection_check_boxes {
+  float: none;
+  margin: 0;
+  vertical-align: -2px;
+  margin-left: 2px;
+}
+
+

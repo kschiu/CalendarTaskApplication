@@ -13,4 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
+//= require bootstrap-editable
+//= require bootstrap-editable-rails
 //= require_tree .
+
+// Datepicker code
+// $(function() {
+// 	$(".datepicker").datepicker({
+// 		format: 'mm/dd/YYYY'
+// 	});
+// });
+

@@ -1,0 +1,79 @@
+<br/><br/><br/><br/><br/><br/><br/><!-- layout fix  -->
+
+<% Event.all.each do |event| %>
+  <% if event.startDate == Date.civil(@calendar.year.to_i, @calendar.month.to_i, @calendar.day.to_i) %> 
+  <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <p class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#<%= event.id %>">
+              <table>
+                <tbody>
+                  <tr><%= event.startDateTime.strftime('%l:%M') %> - <%= event.endDateTime.strftime('%l:%M %p') %></tr>
+                  <tr><h4><%= event.summary %></h4></tr> <!-- Name of event -->
+                  <%# if event.location is not nil %>
+                    <!--<tr><%#= event.location %></tr>--> <!-- TODO: ensure event has location attribute -->
+                  <%# end %>
+                  <!--<tr><%#= event.startDate %></tr>--> <!-- for debugging -->
+                <tbody>
+              </table>
+            </a>
+          </p>
+        </div>
+
+        <div id="<%= event.id %>" class="panel-collapse collapse">
+          <div class="panel-body">
+            <% event.tasks.each do |task| %>
+              <tr>
+                <% if task.is_complete == true %>
+                  <td class="centered"><%= link_to(image_tag("icons/full.png", size: "16") , edit_task_path(task, status: 'incomplete', from: 'event')) %></td>
+                <% else %>
+                  <td class="centered"><%= link_to(image_tag("icons/empty.png", size: "16"), edit_task_path(task, status: 'completed', from: 'event')) %></td>
+                <% end %>
+                <%= task.name %>
+              </tr></br>
+            <% end %>
+            </br>
+            <%= link_to(image_tag("icons/add.png", size: "16"),  new_task_path(id: event.id, source: 'event'), remote: true)%>
+            <br />
+            <div id="task-form" style="display:none;"></div>
+        </div>
+      </div>
+  </div>
+  <% end %>
+  <br/>
+<% end %>
+
+<br/><br/><br/><br/>
+<button id="collapse-init" class="btn btn-primary">
+    See all your tasks
+</button>
+
+<script>
+$(function () {
+
+    var active = true;
+
+    $('#collapse-init').click(function () {
+        if (active) {
+            active = false;
+            $('.panel-collapse').collapse('show');
+            $('.panel-title').attr('data-toggle', '');
+            $(this).text('Hide your tasks');
+        } else {
+            active = true;
+            $('.panel-collapse').collapse('hide');
+            $('.panel-title').attr('data-toggle', 'collapse');
+            $(this).text('Show all tasks');
+        }
+    });
+    
+    $('#accordion').on('show.bs.collapse', function () {
+        if (active) $('#accordion .in').collapse('hide');
+    });
+
+});
+</script>
+
+
+

@@ -26,14 +26,23 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-#Gems for Google Authentication
+# bootstrap
+gem 'bootstrap-sass', '~> 3.3.5'
+
+#simple_form
+gem 'simple_form'
+
+# datepicker
+gem 'momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'eonasdan', submodules: true
+gem 'bootstrap-editable-rails'
+
 gem 'google-api-client', :require => 'google/api_client'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 #Gem for authentication and user
 gem 'devise'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: ba90e7bafd180658c8c2aa5026fd4979251a0f26
+  branch: eonasdan
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.15)
+      momentjs-rails (>= 2.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,7 +42,16 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    autoprefixer-rails (6.0.2)
+      execjs
+      json
     bcrypt (3.1.10)
+    bootstrap-editable-rails (0.0.9)
+      railties (>= 3.1)
+      sass-rails
+    bootstrap-sass (3.3.5)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     builder (3.2.2)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -85,7 +103,7 @@ GEM
     jwt (1.5.1)
     launchy (2.4.3)
       addressable (~> 2.3)
-    libv8 (3.16.14.5)
+    libv8 (3.16.14.11)
     little-plugger (1.1.4)
     logging (2.0.0)
       little-plugger (~> 1.1)
@@ -96,6 +114,8 @@ GEM
     memoist (0.12.0)
     mime-types (1.25.1)
     minitest (5.8.0)
+    momentjs-rails (2.10.3)
+      railties (>= 3.1)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -136,8 +156,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
-      json (~> 1.4)
-    ref (1.0.5)
+    ref (2.0.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     retriable (1.4.1)
@@ -156,7 +175,10 @@ GEM
       faraday (~> 0.9)
       jwt (~> 1.5)
       multi_json (~> 1.10)
-    spring (1.3.6)
+    simple_form (3.1.1)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+    spring (1.4.0)
     sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -167,7 +189,7 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     sqlite3 (1.3.10)
-    therubyracer (0.12.1)
+    therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
@@ -190,18 +212,26 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-editable-rails
+  bootstrap-sass (~> 3.3.5)
   coffee-rails (~> 4.0.0)
+  datetimepicker-rails!
   devise
   google-api-client
   jbuilder (~> 2.0)
   jquery-rails
+  momentjs-rails
   omniauth
   omniauth-google-oauth2
   rails (= 4.1.1)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  simple_form
   spring
   sqlite3
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
+
+BUNDLED WITH
+   1.10.6

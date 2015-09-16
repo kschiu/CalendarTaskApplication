@@ -1,0 +1,60 @@
+  <div class="row" id="cal">
+    <div class="col-xs-7" id="fix-left"> 
+    <p id="today-year"><%= @calendar.year %></p>
+
+    <table id="months">
+      <td></td>
+      <td><%= link_to 'jan', edit_calendar_path(@calendar, status: '1_m') %></td>
+      <td><%= link_to 'feb', edit_calendar_path(@calendar, status: '2_m') %></td>
+      <td><%= link_to 'mar', edit_calendar_path(@calendar, status: '3_m') %></td>
+      <td><%= link_to 'apr', edit_calendar_path(@calendar, status: '4_m') %></td>
+      <td><%= link_to 'may', edit_calendar_path(@calendar, status: '5_m') %></td>
+      <td><%= link_to 'jun', edit_calendar_path(@calendar, status: '6_m') %></td>
+      <td><%= link_to 'jul', edit_calendar_path(@calendar, status: '7_m') %></td>
+      <td><%= link_to 'aug', edit_calendar_path(@calendar, status: '8_m') %></td>
+      <td><%= link_to 'sep', edit_calendar_path(@calendar, status: '9_m') %></td>
+      <td><%= link_to 'oct', edit_calendar_path(@calendar, status: '10_m') %></td>
+      <td><%= link_to 'nov', edit_calendar_path(@calendar, status: '11_m') %></td>
+      <td><%= link_to 'dec', edit_calendar_path(@calendar, status: '12_m') %></td>
+    </table>    
+
+    <table id="days"> 
+      <td>sun</td><td>mon</td><td>tue</td><td>wed</td><td>thu</td><td>fri</td><td>sat</td>
+    </table> 
+
+    <div id="cal-frame">
+      <table class="curr"> 
+        <tr>
+        <% @beginning_of_month = Date.civil(@calendar.year.to_i, @calendar.month.to_i, 1) %>
+        <% @end_of_month = Date.civil(@calendar.year.to_i, @calendar.month.to_i, -1) %>
+        <% (@beginning_of_month..@end_of_month).each do |d| %>
+          <% if d == @beginning_of_month %>
+            <% d.wday.times do %> 
+              <td class='offset'></td> 
+            <% end %>
+          <% end %>
+          <% if d.wday == 0 %> </tr><tr> <% end %>
+          <% if d.day == Date.today.day && d.month == Date.today.month %>
+            <td id="today"> <%= link_to d.day, edit_calendar_path(@calendar, status: d.day.to_s+'_d') %></td>
+          <% else %>
+            <td><%= link_to d.day, edit_calendar_path(@calendar, status: d.day.to_s+'_d') %> </td>
+          <% end %>
+        <% end %>
+        </tr>
+      </table> 
+    </div> 
+  </div>
+
+  <div class="col-xs-4 col-xs-offset-1" id="absolute-right">
+    <div class="col-xs-offset-4 col-xs-4">
+      <p id="today-wdate"><%= Date.new(@calendar.year.to_i, @calendar.month.to_i, @calendar.day.to_i).strftime("%A") %></p>
+      <p id="today-month"><%= Date.new(@calendar.year.to_i, @calendar.month.to_i, @calendar.day.to_i).strftime("%B") %></p>
+    </div>
+    <div class="col-xs-offset-1 col-xs-1">
+      <p id="today-date"><%= Date.new(@calendar.year.to_i, @calendar.month.to_i, @calendar.day.to_i).day %></p>
+    </div>
+
+    <%= render "events" %>
+    
+  </div>
+
