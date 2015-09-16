@@ -2,11 +2,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
       # You need to implement the method below in your model (e.g. app/models/user.rb)
       @user = User.from_omniauth(request.env["omniauth.auth"])
-
+      exists_user = User.find_by(email: @user.email)
       if @user.persisted?
         if @user.sign_in_count == 0
           import_events(request.env["omniauth.auth"])
         end
+        @user.sign_in_count = @user.sign_in_count + 1
+        @user.save
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
         redirect_to tasks_url
       else
