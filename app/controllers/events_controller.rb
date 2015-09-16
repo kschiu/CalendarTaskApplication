@@ -51,10 +51,11 @@ class EventsController < ApplicationController
     end
   end
 
-  def show_all_tasks
-    @tasks = Tasks.filter()
-
+  def show_all_tasks(e_id)
+    @tasks = Tasks.where("event_id = e_id")
   end
+
+  
 
   # DELETE /events/1
   # DELETE /events/1.json

@@ -10,12 +10,13 @@ Rails.application.routes.draw do
 
 
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  devise_scope :user do
-    get 'showSignUp' => 'omniauth_callbacks#google_oauth2'
-  end
+  # devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  # devise_scope :user do
+    # get 'showSignUp' => 'application#signup'
+  # end
 
   # devise_for :omniauth_callbacks
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

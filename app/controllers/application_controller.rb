@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     '/tasks#index'
   end
+
+    def signup()
+        redirect_to "/users/auth/google_oauth2"
+    end
 end
