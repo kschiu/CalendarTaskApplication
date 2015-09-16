@@ -13,7 +13,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :endTimeZone
       t.boolean :endTimeUnspecified
       t.string :recurrence
-      t.int :calendar_id
+      t.integer :calendar_id
 
       t.timestamps
     end

@@ -52,10 +52,9 @@ Rails.application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
->>>>>>> calendarAPI
 
   # get 'month' => 'calendar#index', as: :month
   
-  root :to => 'home#home' 
+  # root :to => 'home#home' 
 
 end

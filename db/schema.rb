@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150914205708) do
+ActiveRecord::Schema.define(version: 20150916042909) do
 
   create_table "calendars", force: true do |t|
     t.string   "year",       default: "2015"
@@ -21,9 +20,6 @@ ActiveRecord::Schema.define(version: 20150914205708) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-=======
-ActiveRecord::Schema.define(version: 20150916042909) do
->>>>>>> calendarAPI
 
   create_table "events", force: true do |t|
     t.string   "status"
@@ -37,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150916042909) do
     t.datetime "endDateTime"
     t.string   "endTimeZone"
     t.boolean  "endTimeUnspecified"
+    t.integer  "calendar_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "google_id"

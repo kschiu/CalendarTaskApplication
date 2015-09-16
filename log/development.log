@@ -73149,3 +73149,1041 @@ Migrating to AddDetailsToUser (20150912220349)
             WHERE name='index_users_on_email' AND type='index'
 
 >>>>>>> calendarAPI
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateEvents (20150911185152)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateEvents (20150911185152)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "htmlLink" varchar(255), "summary" varchar(255), "description" varchar(255), "startDate" date, "startDateTime" datetime, "startTimeZone" varchar(255), "endDate" date, "endDateTime" datetime, "endTimeZone" varchar(255), "endTimeUnspecified" boolean, "recurrence" varchar(255), "calendar_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150911185152"]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Migrating to CreateTasks (20150911185221)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "name" varchar(255), "description" text, "end_date" date, "end_time" time, "is_complete" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150911185221"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+Migrating to DeviseCreateUsers (20150912202939)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150912202939"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddDetailsToUser (20150912220349)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "token" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "uid" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "provider" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150912220349"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCalendars (20150914205708)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "calendars" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "year" varchar(255) DEFAULT '2015', "month" varchar(255) DEFAULT '9', "day" varchar(255) DEFAULT '16', "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150914205708"]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddGoogleIdToEvents (20150915204228)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "events" ADD "google_id" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150915204228"]]
+  [1m[36m (0.3ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveRecurrenceFromEvent (20150916042407)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "aevents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "htmlLink" varchar(255), "summary" varchar(255), "description" varchar(255), "startDate" date, "startDateTime" datetime, "startTimeZone" varchar(255), "endDate" date, "endDateTime" datetime, "endTimeZone" varchar(255), "endTimeUnspecified" boolean, "recurrence" varchar(255), "calendar_id" integer, "created_at" datetime, "updated_at" datetime, "google_id" varchar(255)) [0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "events"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "events"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar(255), "htmlLink" varchar(255), "summary" varchar(255), "description" varchar(255), "startDate" date, "startDateTime" datetime, "startTimeZone" varchar(255), "endDate" date, "endDateTime" datetime, "endTimeZone" varchar(255), "endTimeUnspecified" boolean, "calendar_id" integer, "created_at" datetime, "updated_at" datetime, "google_id" varchar(255)) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "aevents"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "aevents"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150916042407"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Migrating to AddUserToEvents (20150916042909)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "events" ADD "user_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150916042909"]]
+  [1m[35m (0.4ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "calendars" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2015-09-16 13:47:45.225482"], ["updated_at", "2015-09-16 13:47:45.225482"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (2.6ms)
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/devise-3.5.2/app/views/devise/sessions/new.html.erb within layouts/application (35.9ms)
+Completed 200 OK in 297ms (Views: 274.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:54 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-16 13:47:55 -0400
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2015-09-16 13:47:57 -0400
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2015-09-16 13:47:58 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2015-09-16 13:48:42 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (1.3ms)
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/devise-3.5.2/app/views/devise/sessions/new.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 402ms (Views: 380.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:43 -0400
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2015-09-16 13:48:45 -0400
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2015-09-16 13:48:45 -0400
+
+
+Started GET "/users/auth/google_oauth2/callback?state=91cc01f6c360c7a47e25fadc33e0d926348f9ffa103b3962&code=4/UvV8MkSGV5ZanL_MHbuMCaZTkTHcA4xx5zolaEEnHa0" for 127.0.0.1 at 2015-09-16 13:48:46 -0400
+Processing by OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"91cc01f6c360c7a47e25fadc33e0d926348f9ffa103b3962", "code"=>"4/UvV8MkSGV5ZanL_MHbuMCaZTkTHcA4xx5zolaEEnHa0"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'serenasyue@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'serenasyue@gmail.com' LIMIT 1
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-09-16 13:48:47.467070"], ["email", "serenasyue@gmail.com"], ["encrypted_password", "$2a$10$9vKlbbs.tgkaV195mq2S3OJK0juS9sheOL0X5xtP0pwf3cunC6fZa"], ["updated_at", "2015-09-16 13:48:47.467070"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'serenasyue@gmail.com' LIMIT 1[0m
+Google::APIClient - Initializing client with options {}
+Google::APIClient - Please provide :application_name and :application_version when initializing the client
+Google::APIClient::Request Sending API request get https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest {"User-Agent"=>"google-api-ruby-client/0.8.6 Mac OS X/10.10.5\n (gzip)", "Accept-Encoding"=>"gzip", "Content-Type"=>""}
+Decompressing gzip encoded response (12506 bytes)
+Decompressed (103437 bytes)
+Google::APIClient::Request Result: 200 {"expires"=>"Wed, 16 Sep 2015 17:51:28 GMT", "date"=>"Wed, 16 Sep 2015 17:46:28 GMT", "etag"=>"\"ye6orv2F-1npMW3u9suM3a7C5Bo/l_k1z-nMnRAcKQK6zuQvkZvA4dI\"", "vary"=>"Origin, X-Origin", "content-type"=>"application/json; charset=UTF-8", "x-content-type-options"=>"nosniff", "x-frame-options"=>"SAMEORIGIN", "x-xss-protection"=>"1; mode=block", "content-length"=>"12506", "server"=>"GSE", "age"=>"139", "cache-control"=>"public, max-age=300, must-revalidate, no-transform", "alternate-protocol"=>"443:quic,p=1", "alt-svc"=>"quic=\":443\"; p=\"1\"; ma=604800", "connection"=>"close"}
+Google::APIClient::Request Sending API request get https://www.googleapis.com/calendar/v3/calendars/primary/events?maxResults=10&orderBy=startTime&singleEvents=true&timeMin=2015-09-16T13%3A48%3A47-04%3A00 {"User-Agent"=>"google-api-ruby-client/0.8.6 Mac OS X/10.10.5\n (gzip)", "Content-Type"=>"application/json", "Accept-Encoding"=>"gzip", "Authorization"=>"Bearer ya29.8AEYObjqZ7KAgWsUltxVjEjzZSFR0iJ9UcTAgkGJmdTDlA0ZwpWuR47E5HBLJxMHQYrpvw", "Cache-Control"=>"no-store"}
+Decompressing gzip encoded response (2196 bytes)
+Decompressed (6627 bytes)
+Google::APIClient::Request Result: 200 {"expires"=>"Wed, 16 Sep 2015 17:48:47 GMT", "date"=>"Wed, 16 Sep 2015 17:48:47 GMT", "cache-control"=>"private, max-age=0, must-revalidate, no-transform", "vary"=>"Origin, X-Origin", "content-type"=>"application/json; charset=UTF-8", "x-content-type-options"=>"nosniff", "x-frame-options"=>"SAMEORIGIN", "x-xss-protection"=>"1; mode=block", "server"=>"GSE", "alternate-protocol"=>"443:quic,p=1", "alt-svc"=>"quic=\":443\"; p=\"1\"; ma=604800", "connection"=>"close", "transfer-encoding"=>"chunked"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events" ("created_at", "google_id", "htmlLink", "status", "summary", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-09-16 13:48:47.866296"], ["google_id", "_612jcg9j84p48b9k8oqkcb9k6d33gba16d232ba188p34d9j6h13eg9l8k"], ["htmlLink", "https://www.google.com/calendar/event?eid=XzYxMmpjZzlqODRwNDhiOWs4b3FrY2I5azZkMzNnYmExNmQyMzJiYTE4OHAzNGQ5ajZoMTNlZzlsOGsgc2VyZW5hc3l1ZUBt"], ["status", "confirmed"], ["summary", "Meeting"], ["updated_at", "2015-09-16 13:48:47.866296"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("created_at", "description", "google_id", "htmlLink", "status", "summary", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", "2015-09-16 13:48:47.868517"], ["description", "To see detailed information for automatically created events like this one, use the official Google Calendar app. http://g.co/calendar\n\nThis event was created from an email you received in Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DNlS8e2_QVXUwOKVgMFXutcHOBjfQBAChM\n"], ["google_id", "_6tlnaqrle5p6cpb4dhmj4phpehp6ktjldppn4dbfc9jjae9h70p78crfe8pmar3kd9jn0obmc4q7crr4ddn3eqbf6domap34cksjirrlddmme"], ["htmlLink", "https://www.google.com/calendar/event?eid=XzZ0bG5hcXJsZTVwNmNwYjRkaG1qNHBocGVocDZrdGpsZHBwbjRkYmZjOWpqYWU5aDcwcDc4Y3JmZThwbWFyM2tkOWpuMG9ibWM0cTdjcnI0ZGRuM2VxYmY2ZG9tYXAzNGNrc2ppcnJsZGRtbWUgc2VyZW5hc3l1ZUBt"], ["status", "confirmed"], ["summary", "Carnegie Mellon University Philharmonic"], ["updated_at", "2015-09-16 13:48:47.868517"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "events" ("created_at", "google_id", "htmlLink", "status", "summary", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-09-16 13:48:47.870564"], ["google_id", "_60ok2cpl8l2j4b9n64q46b9k8or4ab9p8l2k2b9i71134h1j6orjgg9m84"], ["htmlLink", "https://www.google.com/calendar/event?eid=XzYwb2syY3BsOGwyajRiOW42NHE0NmI5azhvcjRhYjlwOGwyazJiOWk3MTEzNGgxajZvcmpnZzltODQgc2VyZW5hc3l1ZUBt"], ["status", "confirmed"], ["summary", "Editing Studio Setup"], ["updated_at", "2015-09-16 13:48:47.870564"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("created_at", "google_id", "htmlLink", "status", "summary", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-09-16 13:48:47.872231"], ["google_id", "_84pj8da369330b9h6opj0b9k6t1j2b9o6d346ba688rj2c1j8kq3gga36g"], ["htmlLink", "https://www.google.com/calendar/event?eid=Xzg0cGo4ZGEzNjkzMzBiOWg2b3BqMGI5azZ0MWoyYjlvNmQzNDZiYTY4OHJqMmMxajhrcTNnZ2EzNmcgc2VyZW5hc3l1ZUBt"], ["status", "confirmed"], ["summary", "Work Session"], ["updated_at", "2015-09-16 13:48:47.872231"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("created_at", "description", "endDate", "google_id", "htmlLink", "startDate", "status", "summary", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-09-16 13:48:47.874191"], ["description", "To see detailed information for automatically created events like this one, use the official Google Calendar app. http://g.co/calendar"], ["endDate", "2015-11-29"], ["google_id", "_6tlnaqrle5p6cpb4dhmj4phpehpmksbfdpom2r32csq36q3cc8rn4prgdhj72e3mcopm6c9hd9h30dpkcthj8qrdd9lj2tj1d1mmodbdctr6e"], ["htmlLink", "https://www.google.com/calendar/event?eid=XzZ0bG5hcXJsZTVwNmNwYjRkaG1qNHBocGVocG1rc2JmZHBvbTJyMzJjc3EzNnEzY2M4cm40cHJnZGhqNzJlM21jb3BtNmM5aGQ5aDMwZHBrY3RoajhxcmRkOWxqMnRqMWQxbW1vZGJkY3RyNmUgc2VyZW5hc3l1ZUBt"], ["startDate", "2015-11-25"], ["status", "confirmed"], ["summary", "Stay at 波士顿洲际酒店"], ["updated_at", "2015-09-16 13:48:47.874191"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 1  [["sign_in_count", 1], ["updated_at", "2015-09-16 13:48:47.876178"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 511ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2015-09-16 13:48:47 -0400
+Processing by TasksController#index as HTML
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks"
+  Rendered collection (0.0ms)
+  Rendered tasks/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 140ms (Views: 137.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-16 13:48:48 -0400
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:48:52 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (1.6ms)
+  Rendered calendars/index.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 138ms (Views: 133.4ms | ActiveRecord: 0.6ms)
+  [1m[35mCalendar Load (0.4ms)[0m  SELECT "calendars".* FROM "calendars"
+
+
+Started GET "/calendars/1/edit?status=10_d" for 127.0.0.1 at 2015-09-16 13:49:14 -0400
+Processing by CalendarsController#edit as HTML
+  Parameters: {"status"=>"10_d", "id"=>"1"}
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"  WHERE "calendars"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "calendars" SET "day" = ?, "updated_at" = ? WHERE "calendars"."id" = 1[0m  [["day", "10"], ["updated_at", "2015-09-16 13:49:14.424755"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/calendars
+Completed 302 Found in 5ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:49:14 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.3ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.7ms)
+  Rendered calendars/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 127ms (Views: 125.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/calendars/1/edit?status=16_d" for 127.0.0.1 at 2015-09-16 13:49:20 -0400
+Processing by CalendarsController#edit as HTML
+  Parameters: {"status"=>"16_d", "id"=>"1"}
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"  WHERE "calendars"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "calendars" SET "day" = ?, "updated_at" = ? WHERE "calendars"."id" = 1[0m  [["day", "16"], ["updated_at", "2015-09-16 13:49:20.220804"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/calendars
+Completed 302 Found in 4ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:49:20 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.5ms)
+  Rendered calendars/index.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 135ms (Views: 133.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/calendars/1/edit?status=9_d" for 127.0.0.1 at 2015-09-16 13:49:23 -0400
+Processing by CalendarsController#edit as HTML
+  Parameters: {"status"=>"9_d", "id"=>"1"}
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"  WHERE "calendars"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "calendars" SET "day" = ?, "updated_at" = ? WHERE "calendars"."id" = 1[0m  [["day", "9"], ["updated_at", "2015-09-16 13:49:23.048955"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/calendars
+Completed 302 Found in 4ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:49:23 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.2ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.7ms)
+  Rendered calendars/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 124ms (Views: 122.7ms | ActiveRecord: 0.4ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  [1m[35mEvent Load (0.3ms)[0m  SELECT  "events".* FROM "events"   ORDER BY "events"."id" ASC LIMIT 1
+
+
+Started GET "/calendars/1/edit?status=6_m" for 127.0.0.1 at 2015-09-16 13:50:39 -0400
+Processing by CalendarsController#edit as HTML
+  Parameters: {"status"=>"6_m", "id"=>"1"}
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"  WHERE "calendars"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "calendars" SET "month" = ?, "updated_at" = ? WHERE "calendars"."id" = 1[0m  [["month", "6"], ["updated_at", "2015-09-16 13:50:39.965261"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/calendars
+Completed 302 Found in 4ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:50:39 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.6ms)
+  Rendered calendars/index.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 125ms (Views: 124.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/calendars/1/edit?status=7_m" for 127.0.0.1 at 2015-09-16 13:50:41 -0400
+Processing by CalendarsController#edit as HTML
+  Parameters: {"status"=>"7_m", "id"=>"1"}
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"  WHERE "calendars"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "calendars" SET "month" = ?, "updated_at" = ? WHERE "calendars"."id" = 1[0m  [["month", "7"], ["updated_at", "2015-09-16 13:50:41.058772"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/calendars
+Completed 302 Found in 4ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:50:41 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.8ms)
+  Rendered calendars/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 129ms (Views: 128.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/calendars/1/edit?status=8_m" for 127.0.0.1 at 2015-09-16 13:50:41 -0400
+Processing by CalendarsController#edit as HTML
+  Parameters: {"status"=>"8_m", "id"=>"1"}
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"  WHERE "calendars"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "calendars" SET "month" = ?, "updated_at" = ? WHERE "calendars"."id" = 1[0m  [["month", "8"], ["updated_at", "2015-09-16 13:50:41.647870"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/calendars
+Completed 302 Found in 4ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:50:41 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.5ms)
+  Rendered calendars/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 130ms (Views: 128.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/calendars/1/edit?status=9_m" for 127.0.0.1 at 2015-09-16 13:50:42 -0400
+Processing by CalendarsController#edit as HTML
+  Parameters: {"status"=>"9_m", "id"=>"1"}
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"  WHERE "calendars"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "calendars" SET "month" = ?, "updated_at" = ? WHERE "calendars"."id" = 1[0m  [["month", "9"], ["updated_at", "2015-09-16 13:50:42.233312"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/calendars
+Completed 302 Found in 4ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:50:42 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.6ms)
+  Rendered calendars/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 123ms (Views: 122.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:51:26 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.2ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.6ms)
+  Rendered calendars/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 128ms (Views: 126.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:27 -0400
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:51:37 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.5ms)
+  Rendered calendars/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 126ms (Views: 125.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:51:37 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.5ms)
+  Rendered calendars/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 129ms (Views: 128.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:51:37 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.1ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.7ms)
+  Rendered calendars/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 123ms (Views: 122.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-09-16 13:51:49 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (0.6ms)
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/devise-3.5.2/app/views/devise/sessions/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 145ms (Views: 143.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-16 13:51:50 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (0.4ms)
+  Rendered /Users/serena/.rvm/gems/ruby-2.2.0/gems/devise-3.5.2/app/views/devise/sessions/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 127ms (Views: 126.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/calendars.css?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/customs.css?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/tasks.css?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap-datetimepicker.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/pickers.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap-editable.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/bootstrap-editable-rails.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/calendars.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/tasks.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-09-16 13:52:23 -0400
+
+
+Started GET "/calendars" for 127.0.0.1 at 2015-09-16 13:52:25 -0400
+Processing by CalendarsController#index as HTML
+  [1m[36mCalendar Load (0.1ms)[0m  [1mSELECT  "calendars".* FROM "calendars"   ORDER BY "calendars"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+  Rendered calendars/_events.html.erb (0.7ms)
+  Rendered calendars/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 121ms (Views: 119.1ms | ActiveRecord: 0.3ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT  "events".* FROM "events"   ORDER BY "events"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.4ms)[0m  SELECT  "events".* FROM "events"   ORDER BY "events"."id" ASC LIMIT 1
